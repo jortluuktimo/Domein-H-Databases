@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("../fotos/image (1).jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+@font-face {
+    font-family: 'Arena';
+    src: url(../fonts/Arena-rvwaK.ttf) format('ttf');
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #22222280;
+    padding: 20px 40px;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+.headerfoto {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+    border-radius: 100%;
+}
+.logo {
+    font-family: Arena;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    font-size: 32px;
+}
+.pagina-link:hover {
+    display: inline-block;
+    color: #222;
+    background-color: #e0e0e0;
+}
+.pagina-link {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 4px 0px 4px 0px;
+    border-radius: 999px;
+}
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+a {
+    text-decoration: none;
+}
+
+.knopslag {
+    padding: 6px 12px;
+    background-color:  #444444a4;
+    color: #ffffff;
+    border: #700000 1.5px solid;
+    border-radius: 999px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.knopslag:hover {
+    background-color: #b8b8b8;
+    color: #ffffff;
+    border: #700000 1.5px solid;
+}
+.titel {
+    font-size: 48px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 20px;
+}

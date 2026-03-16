@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #22222280;
+    padding: 20px 40px;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+.headerfoto {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+    border-radius: 100%;
+}
+.logo {
+    font-family: Arena;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    font-size: 32px;
+}
+.pagina-link:hover {
+    display: inline-block;
+    color: #222;
+    background-color: #e0e0e0;
+}
+.pagina-link {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 4px 0px 4px 0px;
+    border-radius: 999px;
+}
+.container {
+    margin-top: 30px;
+    width :500px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: #f8f9fa;
+}
+a {
+    text-decoration: none;
+}
+h1 {
+    margin: 25px;
+}
+p {
+    margin: 7px;
+}
+
+.tekstvlak {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.knop {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,5 +1,46 @@
 <?php
 session_start();
+    require("connection.php");
+    include("functions.php"); 
+    
+    $error = "";
+
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        //something was posted
+        $user_name = $_POST['user_name'];
+        $password = $_POST['password'];
+
+        if(!empty($user_name) && !empty($password) && !ctype_digit($user_name))
+        {
+
+            //read from database
+            $query = 'select * from users where user_name = "' . $user_name . '"';
+            $result = mysqli_query($con, $query);
+
+            if($result)
+            {
+                if($result && mysqli_num_rows($result) > 0)
+                {
+
+                    $user_data = mysqli_fetch_assoc($result);
+                    
+                    if($user_data['password'] === $password)
+                    {
+
+                        $_SESSION['user_id'] = $user_data['user_id'];
+                        header("Location: casinohome.php");
+                        die;
+                    }
+                }
+            }
+            
+            $error = "Foute username of wachtwoord!";
+        }else
+        {
+            $error = "Vul alsjeblieft alle velden in!";
+        }
+    }
 
 ?>
 
@@ -31,7 +72,10 @@ session_start();
                 <p>Password</p>
                 <input class="tekstvlak" type="password" name="password"><br><br>
 
-                <input class="knop"type="submit" value="Login"><br><br>
+                <input class="knop"type="submit" value="Login">
+
+                <p class="error"><?php echo $error; ?></p><br>
+
 
                 <a href="signup.php">Nog geen account? Meld je hier aan!</a><br><br>
             </form>

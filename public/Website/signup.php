@@ -1,11 +1,38 @@
 <?php
 session_start();
+    require("connection.php");
+    include("functions.php");  
 
-    include("connection.php");
-    include("functions.php");
+    $error = "";
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+        //something was posted
+        $user_name = $_POST['user_name'];
+        $password = $_POST['password'];
+    
 
+        if(!empty($user_name) && !empty($password) && !ctype_digit($user_name)) 
+        {
+            //save to database
+            $user_id = random_num(20);
+            $query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
+
+            mysqli_query($con, $query);
+
+            $wallet_query = "INSERT INTO usermoney (user_id, saldo) VALUES ('$user_id', 0.00)";
+            
+            mysqli_query($con, $wallet_query);
+
+            header("Location: login.php");
+            die;
+
+        }
+        else {
+            $error = "Vul alsjeblieft alle velden in!";
+        }
+    }
+
+           
 ?>
-
 
 <!doctype html>
 <html lang="nl">
@@ -35,7 +62,9 @@ session_start();
                 <p>Password</p>
                 <input class="tekstvlak" type="password" name="password"><br><br>
 
-                <input class="knop"type="submit" value="Aanmelden"><br><br>
+                <input class="knop"type="submit" value="Aanmelden">
+
+                <p class="error"><?php echo $error; ?></p><br>
 
                 <a href="login.php">Heb je al een account? Log hier in!</a><br><br>
             </form>

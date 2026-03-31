@@ -1,0 +1,770 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap');
+
+@font-face {
+    font-family: 'Arena';
+    src: url(../fonts/Arena-rvwaK.ttf) format('ttf');
+}
+
+:root {
+    --goud: #f0a500;
+    --goud-light: #e8cc7a;
+    --goud-dark: #c47f00;
+    --rood: #cc2200;
+    --rood-light: #e74c3c;
+    --groen: #1a6b3a;
+    --achtergrond: #0e0e0e;
+    --kaart: #1a1a1a;
+    --rand: #2e2e2e;
+    --tekst: #f0f0f0;
+    --dimtekst: #888;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("../fotos/image (1).jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Barlow', sans-serif;
+    color: var(--tekst);
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #22222280;
+    padding: 20px 40px;
+    color: white;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+.headerfoto {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+    border-radius: 100%;
+}
+.logo {
+    font-family: Arena;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    font-size: 32px;
+}
+.pagina-link:hover {
+    display: inline-block;
+    color: #222;
+    background-color: #e0e0e0;
+}
+.pagina-link {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 4px 0px 4px 0px;
+    border-radius: 999px;
+}
+.paginas {
+    display: flex;
+    gap: 4px;
+}
+
+/* ALGEMEEN */
+.titel {
+    font-size: 48px;
+    font-family: system-ui, sans-serif;
+    margin-bottom: 20px;
+}
+.container {
+    color: white;
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+/* GEDEELD */
+.saldo-balk {
+    background: #1a1a1a;
+    border: 1px solid var(--rand);
+    border-radius: 12px;
+    padding: 10px 28px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--goud);
+    letter-spacing: 1px;
+}
+
+.inzet-rij {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.euro-label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--goud);
+}
+
+.inzet-veld {
+    width: 90px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--rand);
+    background: #1a1a1a;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+}
+.inzet-veld:focus {
+    outline: none;
+    border-color: var(--goud);
+}
+
+.snelle-knoppen {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.snel-knop {
+    padding: 8px 12px;
+    background: #2a2a2a;
+    border: 1px solid var(--rand);
+    border-radius: 8px;
+    color: var(--tekst);
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.85rem;
+    transition: background 0.15s, border-color 0.15s;
+}
+.snel-knop:hover {
+    background: #3a3a3a;
+    border-color: var(--goud);
+    color: var(--goud);
+}
+
+.speel-knop {
+    padding: 12px;
+    background: linear-gradient(135deg, var(--goud), var(--goud-dark));
+    color: #111;
+    border: none;
+    border-radius: 999px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(240,165,0,0.3);
+}
+.speel-knop:hover:not(:disabled) {
+    transform: scale(1.04);
+    box-shadow: 0 6px 28px rgba(240,165,0,0.5);
+}
+.speel-knop:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.resultaat-balk {
+    min-height: 36px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    transition: opacity 0.3s;
+}
+.resultaat-win {
+    color: #4cff8f;
+    text-shadow: 0 0 10px rgba(76,255,143,0.4);
+}
+.resultaat-verlies {
+    color: #ff4c4c;
+}
+
+/* ========================
+   SLOTS
+   ======================== */
+.slots-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 60px 60px;
+    gap: 80px;
+    width: 100%;
+}
+
+.slots-midden {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    flex-shrink: 0;
+}
+
+.slots-titel {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    letter-spacing: 8px;
+    color: var(--goud);
+    text-shadow: 0 0 30px rgba(240,165,0,0.4);
+}
+
+.machine {
+    position: relative;
+    background: linear-gradient(160deg, #1e1e1e, #111);
+    border: 2px solid #333;
+    border-radius: 20px;
+    padding: 30px 24px 24px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.5);
+    width: 360px;
+}
+
+.rollen-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    overflow: hidden;
+    height: 120px;
+}
+
+.rol {
+    width: 90px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #0d0d0d;
+    border: 1px solid #333;
+    position: relative;
+}
+
+.symbool-strip {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    transition: top 0.05s linear;
+}
+
+.symbool {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    user-select: none;
+}
+
+.lijn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--goud), transparent);
+    pointer-events: none;
+}
+
+.uitleg-tabel {
+    background: #1a1a1a;
+    border: 1px solid var(--rand);
+    border-radius: 16px;
+    padding: 20px 28px;
+    width: 320px;
+}
+.uitleg-tabel h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: var(--goud);
+    margin-bottom: 12px;
+    text-align: center;
+}
+.uitleg-tabel table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.uitleg-tabel td {
+    padding: 6px 8px;
+    font-size: 0.95rem;
+    color: var(--tekst);
+    border-bottom: 1px solid #2a2a2a;
+}
+.uitleg-tabel td:last-child {
+    text-align: right;
+    color: var(--goud);
+    font-weight: 600;
+}
+
+@keyframes gloed {
+    0%, 100% { box-shadow: 0 0 10px rgba(240,165,0,0.3); }
+    50% { box-shadow: 0 0 40px rgba(240,165,0,0.8); }
+}
+.machine.gewonnen {
+    animation: gloed 0.6s ease-in-out 3;
+}
+
+/* ========================
+   ROULETTE
+   ======================== */
+.roulette-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 60px;
+    padding: 50px 40px 60px;
+    flex: 1;
+}
+
+.roulette-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.roulette-rechts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 360px;
+    padding-top: 10px;
+}
+
+.roulette-titel {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--goud);
+    text-shadow: 0 0 40px rgba(201,168,76,0.3);
+}
+
+.wiel-container {
+    position: relative;
+    width: 340px;
+    height: 340px;
+}
+
+#roulette-wiel {
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 6px var(--goud-dark),
+        0 0 0 10px #111,
+        0 0 40px rgba(201,168,76,0.2),
+        0 8px 40px rgba(0,0,0,0.8);
+    display: block;
+}
+
+.wiel-naald {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: var(--goud);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    z-index: 10;
+    filter: drop-shadow(0 0 6px rgba(201,168,76,0.6));
+}
+
+.wiel-midden {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    background: radial-gradient(circle, var(--goud-light), var(--goud-dark));
+    border-radius: 50%;
+    border: 3px solid #111;
+    z-index: 10;
+    box-shadow: 0 0 12px rgba(201,168,76,0.5);
+}
+
+.inzet-sectie {
+    background: var(--kaart);
+    border: 1px solid var(--rand);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.inzet-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--goud);
+    font-weight: 700;
+}
+
+.keuze-sectie {
+    background: var(--kaart);
+    border: 1px solid var(--rand);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.keuze-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--goud);
+    font-weight: 700;
+}
+
+.keuze-groep {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.groep-titel {
+    font-size: 0.85rem;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.uitbetaling-badge {
+    background: var(--goud-dark);
+    color: var(--goud-light);
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.keuze-rij {
+    display: flex;
+    gap: 8px;
+}
+
+.keuze-knop {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--rand);
+    background: #1e1e1e;
+    color: var(--tekst);
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.15s;
+}
+.keuze-knop:hover { border-color: var(--goud); }
+.keuze-knop.actief {
+    border-color: var(--goud);
+    background: var(--goud-dark);
+    color: var(--goud-light);
+    box-shadow: 0 0 12px rgba(201,168,76,0.3);
+}
+.keuze-knop.rood:hover,
+.keuze-knop.rood.actief {
+    border-color: var(--rood-light);
+    background: #5a1010;
+    color: #ff9999;
+    box-shadow: 0 0 12px rgba(192,57,43,0.4);
+}
+.keuze-knop.zwart:hover,
+.keuze-knop.zwart.actief {
+    border-color: #666;
+    background: #2a2a2a;
+    color: #ccc;
+}
+
+.getallen-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 4px;
+}
+
+.getal-knop {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.1s;
+    font-family: 'Barlow', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.getal-knop.groen { background: var(--groen); color: white; }
+.getal-knop.rood-getal { background: var(--rood); color: white; }
+.getal-knop.zwart-getal { background: #222; color: white; border-color: #333; }
+.getal-knop:hover { transform: scale(1.1); border-color: var(--goud); }
+.getal-knop.actief {
+    border-color: var(--goud-light) !important;
+    box-shadow: 0 0 8px rgba(201,168,76,0.6);
+    transform: scale(1.1);
+}
+
+@keyframes goudGloed {
+    0%, 100% { box-shadow: 0 0 0 6px var(--goud-dark), 0 0 0 10px #111, 0 0 20px rgba(201,168,76,0.2); }
+    50% { box-shadow: 0 0 0 6px var(--goud), 0 0 0 10px #111, 0 0 60px rgba(201,168,76,0.7); }
+}
+.wiel-container.gewonnen canvas {
+    animation: goudGloed 0.6s ease-in-out 3;
+}
+/* ========================
+   BLACKJACK
+   ======================== */
+.bj-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+}
+
+.bj-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.bj-titel {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 8px;
+    color: var(--goud);
+    text-shadow: 0 0 30px rgba(240,165,0,0.4);
+}
+
+.bj-tafel {
+    background: radial-gradient(ellipse at center, #1a4a2a 0%, #0d2a16 100%);
+    border: 3px solid var(--goud-dark);
+    border-radius: 24px;
+    padding: 24px 30px;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8), inset 0 0 60px rgba(0,0,0,0.3);
+}
+
+.bj-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.zone-label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.score-badge {
+    background: #111;
+    color: var(--goud);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--goud-dark);
+    min-width: 28px;
+    text-align: center;
+}
+.score-badge.bust { color: #ff4c4c; border-color: #ff4c4c; }
+.score-badge.blackjack { color: #4cff8f; border-color: #4cff8f; }
+
+.kaarten-rij {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 80px;
+    margin-top: 6px;
+}
+
+.handen-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.hand-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.hand-wrapper.actieve-hand {
+    border-color: var(--goud);
+    box-shadow: 0 0 16px rgba(240,165,0,0.2);
+}
+
+.hand-inzet {
+    font-size: 0.8rem;
+    color: var(--goud);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* SPEELKAART */
+.speelkaart {
+    width: 56px;
+    height: 80px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid #ddd;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+    box-shadow: 2px 3px 8px rgba(0,0,0,0.4);
+    animation: kaartIn 0.25s ease-out forwards;
+    flex-shrink: 0;
+}
+
+@keyframes kaartIn {
+    from { transform: translateY(-20px) scale(0.8); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.speelkaart.rood { color: #c0392b; }
+.speelkaart.zwart { color: #111; }
+
+css.speelkaart.verborgen {
+    background: linear-gradient(135deg, #1a3a6a 25%, #2a5aaa 25%, #2a5aaa 50%, #1a3a6a 50%, #1a3a6a 75%, #2a5aaa 75%);
+    background-size: 12px 12px;
+    border: 2px solid #4a7acc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kaart-rug {
+    font-size: 5rem;
+    line-height: 1;
+    color: #2a5aaa;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.kaart-hoek {
+    position: absolute;
+    font-size: 0.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+}
+.kaart-hoek.links { top: 4px; left: 5px; }
+.kaart-hoek.rechts { bottom: 4px; right: 5px; transform: rotate(180deg); }
+.kaart-midden { font-size: 1.4rem; }
+
+/* ACTIES */
+.bj-acties {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.actie-knop {
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    background: linear-gradient(135deg, var(--goud), var(--goud-dark));
+    color: #111;
+    box-shadow: 0 4px 16px rgba(240,165,0,0.3);
+    margin-top: 12px;
+}
+.actie-knop:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 22px rgba(240,165,0,0.5);
+}
+.actie-knop.secundair {
+    background: #2a2a2a;
+    color: var(--tekst);
+    border: 1px solid var(--rand);
+    box-shadow: none;
+}
+.actie-knop.secundair:hover {
+    border-color: var(--goud);
+    color: var(--goud);
+    box-shadow: none;
+}
+
+
+
+/* RESULTAAT */
+.bj-resultaat {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    min-height: 36px;
+    text-align: center;
+}
+.bj-resultaat.resultaat-win { color: #4cff8f; text-shadow: 0 0 10px rgba(76,255,143,0.4); }
+.bj-resultaat.resultaat-verlies { color: #ff4c4c; }
+.bj-resultaat.resultaat-push { color: var(--goud); }
+
+/* INZET SECTIE */
+.bj-inzet-sectie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.bj-start-knop {
+    width: 200px;
+    font-size: 1.8rem;
+}

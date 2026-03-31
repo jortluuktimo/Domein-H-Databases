@@ -80,3 +80,6 @@ p {
     border-radius: 5px;
     cursor: pointer;
 }
+.error {
+    color: red;
+}
